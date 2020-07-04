@@ -7,3 +7,32 @@
 import RPi.GPIO as GPIO
 from time import sleep
 from datetime import datetime
+
+
+#==================#
+#Promps for values
+#Input pin
+while True:
+	PinIn = input("Please enter your GPIO output pin: ")
+	try:
+		PinIn = int(PinIn)
+		break
+	except:
+		pass
+
+
+
+#==================#
+#Sets up GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(PinIn,GPIO.OUT)
+
+
+
+#==================#
+#Defines Subs	
+def ConvertBin(HexVal): #Converts binary data to hexidecimal
+    my_hexdata = "1a"
+    scale = 16 ## equals to hexadecimal
+    num_of_bits = 8
+    return(bin(int(my_hexdata, scale))[2:].zfill(num_of_bits))
