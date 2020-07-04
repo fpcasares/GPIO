@@ -14,7 +14,7 @@ from datetime import datetime
 #Promps for values
 #Input pin
 while True:
-	PinIn = input("Please enter your sensor pin: ")
+	PinIn = input("Please enter your GPIO pin: ")
 	try:
 		PinIn = int(PinIn)
 		break
