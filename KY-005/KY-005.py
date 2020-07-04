@@ -31,8 +31,7 @@ GPIO.setup(PinIn,GPIO.OUT)
 
 #==================#
 #Defines Subs	
-def ConvertBin(HexVal): #Converts binary data to hexidecimal
-    my_hexdata = "1a"
+def ConvertBin(HexVal): #Converts hexidecimal data to binary data
     scale = 16 ## equals to hexadecimal
-    num_of_bits = 8
-    return(bin(int(my_hexdata, scale))[2:].zfill(num_of_bits))
+    num_of_bits = 4*len(HexVal)
+    return(bin(int(HexVal, scale))[2:].zfill(num_of_bits))
