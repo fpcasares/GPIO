@@ -1,31 +1,42 @@
 # Create a CommandSet for your remote control
-# GPIO for the IR receiver: 23
-# GPIO for the IR transmitter: 22
+# GPIO for the IR receiver: 15
+# GPIO for the IR transmitter: 15
 from ircodec.command import CommandSet
-controller = CommandSet(name='AC',emitter_gpio=14, receiver_gpio=15, description='AC')
-
-#Load from JSON:
-controller = CommandSet.load('AC.json')
+import json
 
 
-# Add the volume up key
-#controller.add('turn_on_off')
-# Connected to pigpio
-# Detecting IR command...
-# Received.
+JSON_FILE='AC.json'
 
-# Send the volume up command
-controller.emit('turn_on_off')
 
-# Remove the volume up command
-#controller.remove('volume_up')
+def send_command(command,device_type='AC',emitter_gpio=14,receiver_gpio=15):
+    controller = CommandSet(name=device_type, emitter_gpio=emitter_gpio, receiver_gpio=receiver_gpio, description=device_type)
+    #Load from JSON:
+    controller = CommandSet.load('{}.json'.format(device_type))
+    controller.emit(command) 
 
-# Examine the contents of the CommandSet
-#controller
-# CommandSet(emitter=22, receiver=23, description="TV remote")
-# {}
 
-# Save to JSON
-#controller.save_as('AC.json')
+def main():
+    import time
+    #Print contenct of the commands for the file
+    json_obj=json.load(open(JSON_FILE,'rt'))
+    for command in json_obj['commands'].keys():
+        print(command)
+    send_command('on')
+    time.sleep(2)
 
-# Load from JSON
+    send_command('calor')
+    time.sleep(2)
+ 
+    send_command('25grados')
+    time.sleep(2)
+
+
+if __name__=='__main__':
+    main()
+
+
+
+
+
+
+
