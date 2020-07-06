@@ -21,7 +21,7 @@ sudo make install
 
 ## **Start pigpio daemon**
 ```bash
-sudo pigpio
+sudo pigpiod
 ```
 
 
