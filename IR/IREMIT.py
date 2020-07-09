@@ -5,13 +5,13 @@ from ircodec.command import CommandSet
 import json
 
 
-JSON_FILE='AC.json'
+JSON_FILE='./AC.json'
 
 
 def send_command(command,device_type='AC',emitter_gpio=14,receiver_gpio=15):
     controller = CommandSet(name=device_type, emitter_gpio=emitter_gpio, receiver_gpio=receiver_gpio, description=device_type)
     #Load from JSON:
-    controller = CommandSet.load('{}.json'.format(device_type))
+    controller = CommandSet.load(JSON_FILE)
     controller.emit(command) 
 
 
