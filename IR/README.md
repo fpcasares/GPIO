@@ -1,5 +1,12 @@
-
 # **The Experiments with IR require the following dependencies**
+
+## You can run these experiments on docker
+
+Follow instructions on the following link
+[GPIO Image](https://hub.docker.com/r/fpcasar/gpio)
+
+
+
 
 ## **Python Packages:**
 Install IRCODEC and PIGPIO packages
