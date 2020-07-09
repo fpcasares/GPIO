@@ -14,6 +14,8 @@ def main():
     
     if not args.command:
         command='on'
+    
+    send_command(command)
 
 
 
