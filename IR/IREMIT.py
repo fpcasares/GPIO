@@ -14,7 +14,7 @@ def send_command(command,file=JSON_FILE,device_type='AC',emitter_gpio=14,receive
     controller = CommandSet.load(file)
     controller.emit(command)
     
-def get_available_commands(file=JSON_FILE)
+def get_available_commands(file=JSON_FILE):
     json_obj=json.load(open(file,'rt'))
     commands_list=list()
     return(list(json_obj['commands'].keys()))
