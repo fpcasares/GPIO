@@ -5,14 +5,22 @@ from ircodec.command import CommandSet
 import json
 
 
-JSON_FILE='./AC.json'
+JSON_FILE='/webserver/GPIO/IR/AC.json'
 
 
-def send_command(command,device_type='AC',emitter_gpio=14,receiver_gpio=15):
+def send_command(command,file=JSON_FILE,device_type='AC',emitter_gpio=14,receiver_gpio=15):
     controller = CommandSet(name=device_type, emitter_gpio=emitter_gpio, receiver_gpio=receiver_gpio, description=device_type)
     #Load from JSON:
-    controller = CommandSet.load(JSON_FILE)
-    controller.emit(command) 
+    controller = CommandSet.load(file)
+    controller.emit(command)
+    
+def get_available_commands(file=JSON_FILE)
+    json_obj=json.load(open(file,'rt'))
+    commands_list=list()
+    return(list(json_obj['commands'].keys()))
+    
+    
+
 
 
 def main():
@@ -33,10 +41,3 @@ def main():
 
 if __name__=='__main__':
     main()
-
-
-
-
-
-
-
