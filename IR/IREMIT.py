@@ -22,11 +22,11 @@ GPIO_EMITTER=14
 # BCM GPIO for the IR receiver: 15
 GPIO_RECEIVER=15
 
-JSON_FILE='./ir_codes/AC.json'
+JSON_FILE='./ir_codes_modules/AC.json'
 
 '''
-def load(self):
-    """Try to load all IR CODES found in the ir_codes folder"""
+def load_codes_modules():
+    """Try to load all IR codes modules found in the ir_codes_modules folder"""
     ir_codes = []
     path = os.path.join(os.path.dirname(__file__), "ir_codes")
     directory = pkgutil.iter_modules(path=[path])
