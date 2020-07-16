@@ -52,13 +52,19 @@ def main():
     
     
     commands_list=get_available_commands()
-    
+    files=get_files()
     
     parser = argparse.ArgumentParser()
     parser.add_argument("-a", "--available-commands", help="Show available lists of IR commands",action="store_true")
     parser.add_argument("-c","--command",type=str, help="Command to send to AC")
-    parser.add_argument("-f","--files",type=str, help="Available command_set files for a particular device")
+    parser.add_argument("-f","--files", help="Available command_set files for a particular device", action="store_true")
     args = parser.parse_args()
+    
+    
+    if args.files:
+        for item in files:
+            print(item)
+    
     
     if args.available_commands:
         for item in commands_list:
