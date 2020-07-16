@@ -25,7 +25,7 @@ GPIO_RECEIVER=15
 JSON_FILE='./ir_codes_modules/AC.json'
 
 def get_files():
-    file_list=glob.glob('./GPIO/IR/ir_codes_modules/*')
+    file_list=glob.glob('./ir_codes_modules/*')
     return (file_list)
 
 
