@@ -50,9 +50,9 @@ def main():
     import argparse
     import configparser
     
-    
-    commands_list=get_available_commands()
     files=get_files()
+    commands_list=get_available_commands()
+    
     
     parser = argparse.ArgumentParser()
     parser.add_argument("-a", "--available-commands", help="Show available lists of IR commands",action="store_true")
