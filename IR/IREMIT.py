@@ -12,7 +12,7 @@ else:
     
 
 import json
-
+import glob
 
 
 
@@ -24,33 +24,12 @@ GPIO_RECEIVER=15
 
 JSON_FILE='./ir_codes_modules/AC.json'
 
-'''
-def load_codes_modules():
-    """Try to load all IR codes modules found in the ir_codes_modules folder"""
-    ir_codes = []
-    path = os.path.join(os.path.dirname(__file__), "ir_codes")
-    directory = pkgutil.iter_modules(path=[path])
-    for finder, name, ispkg in directory:
-        try:
-            loader = finder.find_module(name)
-            module = loader.load_module(name)
-            if hasattr(module, "commandWords") \
-                    and hasattr(module, "moduleName") \
-                    and hasattr(module, "execute"):
-                self.modules.append(module)
-                print("The module '{0}' has been loaded, "
-                      "successfully.".format(name))
-            else:
-                print("[ERROR] The module '{0}' is not in the "
-                      "correct format.".format(name))
-        except:
-            print("[ERROR] The module '" + name + "' has some errors.")
-    print("\n")
-'''
+def get_files():
+    file_list=glob.glob('./GPIO/IR/ir_codes_modules/*')
+    return (file_list)
 
 
-
-def send_command(command,file=JSON_FILE,device_type='AC',emitter_gpio=GPIO_EMITTER,receiver_gpio=GPIO_RECEIVER):
+def send_command(command,file=JSON_FILE,device_type='*',emitter_gpio=GPIO_EMITTER,receiver_gpio=GPIO_RECEIVER):
     controller = CommandSet(name=device_type, emitter_gpio=emitter_gpio, receiver_gpio=receiver_gpio, description=device_type)
     #Load from JSON:
     controller = CommandSet.load(file)
@@ -78,10 +57,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-a", "--available-commands", help="Show available lists of IR commands",action="store_true")
     parser.add_argument("-c","--command",type=str, help="Command to send to AC")
-    #parser.add_argument("-irc","--ir-commands",type=str, help="Command to send to AC")
+    parser.add_argument("-f","--files",type=str, help="Available command_set files for a particular device")
     args = parser.parse_args()
     
-    if args.available-commands:
+    if args.available_commands:
         for item in commands_list:
             print(item)
     
