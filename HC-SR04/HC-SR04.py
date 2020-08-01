@@ -20,27 +20,33 @@ GPIO.setup(TRIGGER,GPIO.OUT)
 GPIO.setup(ECHO,GPIO.IN)
 
 
-
-GPIO.output(TRIGGER,False)
-print("Waiting for Sensor to Settle")
-time.sleep(2)
-
-GPIO.output(TRIGGER,True)
-time.sleep(0.00001)
 GPIO.output(TRIGGER,False)
 
-while GPIO.input(ECHO)==0:
-  pulse_start = time.time()
-
-while GPIO.input(ECHO)==1:
-  pulse_end = time.time()   
 
 
-pulse_duration =pulse_end - pulse_start  
 
-distance= pulse_duration * 17150
-distance = round(distance,6)
+def get_distance():
+    GPIO.output(TRIGGER,True)
+    time.sleep(0.00001)
+    GPIO.output(TRIGGER,False)
 
-print ("Distance: ",distance," cm")
+    while GPIO.input(ECHO)==0:
+      pulse_start = time.time()
+    while GPIO.input(ECHO)==1:
+      pulse_end = time.time()   
+
+    pulse_duration =pulse_end - pulse_start  
+    distance= pulse_duration * 17150
+    distance = round(distance,3)
+    return(distance)
+
+
+while True:
+    print(get_distance())
+    
+
+
+
+
 
 GPIO.cleanup()
