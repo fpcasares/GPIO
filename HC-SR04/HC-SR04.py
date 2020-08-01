@@ -42,6 +42,7 @@ def get_distance():
 
 
 while True:
+    time.sleep(0.125)
     print(get_distance())
     
 
