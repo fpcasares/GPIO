@@ -13,7 +13,7 @@ GPIO.setup(14, GPIO.OUT)
 GPIO.output(14, True)
 
 def intermitent():
-    while not KeyboardInterrupt:
+    while True:
         GPIO.output(14, True)
         time.sleep(1)
         GPIO.output(14, False)
