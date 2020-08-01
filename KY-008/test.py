@@ -19,7 +19,7 @@ def intermitent():
         time.sleep(1)
         GPIO.output(14, False)
         time.sleep(1)
-
+   GPIO.cleanup()
 
 if __name__=='__main__':
     intermitent()
