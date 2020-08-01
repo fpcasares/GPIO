@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import time
 
 #GPIO Setup   
 GPIO_14="cable verde"
