@@ -11,7 +11,7 @@ V3="cable azul"
 
 TRIGGER = 15
 ECHO = 18
-GPIO_PIN_OUT = 14
+LASER = 14
 
 GPIO.setmode(GPIO.BCM)
 
@@ -22,7 +22,7 @@ GPIO.setup(ECHO,GPIO.IN)
 
 GPIO.output(TRIGGER,False)
 
-
+GPIO.output(LASER,False)
 
 
 def get_distance():
@@ -41,9 +41,19 @@ def get_distance():
     return(distance)
 
 
+def laser(pw):
+    while True:
+        GPIO.output(LASER,True)
+        time.sleep(pw)
+        GPIO.output(LASER,False)
+        
+        
+
+
 while True:
     time.sleep(0.125)
     print(get_distance())
+    
     
 
 
