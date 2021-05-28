@@ -18,7 +18,7 @@ while key!='quit':
 
 # Save to JSON
 file=input('Enter the device you want to store the keys (e.g. AC)\n')
-controller.save_as('./ir_codes/{}.json'.format(file))
+controller.save_as('./ir_codes_modules/{}.json'.format(file))
 
 
 
